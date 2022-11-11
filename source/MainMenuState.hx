@@ -35,10 +35,10 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
-		#if MODS_ALLOWED 'mods', #end
-		#if ACHIEVEMENTS_ALLOWED 'awards', #end
+		//#if MODS_ALLOWED 'mods', #end
+		//#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
-		#if !switch 'donate', #end
+		//#if !switch 'donate', #end
 		'options'
 	];
 
@@ -118,7 +118,8 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
+			menuItem.x = 100;
+			//menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -157,6 +158,55 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		super.create();
+		
+		switch(FlxG.random.Int(1, 23))
+		(
+		    case 1:
+			char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Ezra_menu'));//put your cords and image here
+			char.frames = Paths.getSparrowAtlas('mainmenu/Ezra_menu');//here put the name of the xml
+			char.animation.addByPrefix('idleT', 'Ezra_menu', 24, true);//on 'idle normal' change it to your xml one
+			char.animation.play('idleT');//you can rename the anim however you want to
+			char.scrollFactor.set();
+			FlxG.sound.play(Paths.sound('appear'), 2);
+			char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			add(char);
+
+                     case 2:
+			 char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/menu_Ayedpng'));//put your cords and image here
+			 char.frames = Paths.getSparrowAtlas('mainmenu/menu_Ayedpng');//here put the name of the xml
+			 char.animation.addByPrefix('idleB', 'menu_Ayed', 24, true);//on 'idle normal' change it to your xml one
+			 char.animation.play('idleB');//you can rename the anim however you want to
+			 char.scrollFactor.set();
+			 FlxG.sound.play(Paths.sound('appear'), 2);
+			 char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+			 char.antialiasing = ClientPrefs.globalAntialiasing;
+			 add(char);
+				
+			
+                     case 3:
+			 char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/menu_BF'));//put your cords and image here
+			 char.frames = Paths.getSparrowAtlas('mainmenu/menu_BF');//here put the name of the xml
+			 char.animation.addByPrefix('idleF', 'menu_BF', 24, true);//on 'idle normal' change it to your xml one
+			 char.animation.play('idleF');//you can rename the anim however you want to
+			 char.scrollFactor.set();
+			 FlxG.sound.play(Paths.sound('appear'), 2);
+			 char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+			 char.antialiasing = ClientPrefs.globalAntialiasing;
+			 add(char);
+				
+			
+		     case 4:
+			 char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/menu_GF'));//put your cords and image here
+			 char.frames = Paths.getSparrowAtlas('mainmenu/menu_GF');//here put the name of the xml
+			 char.animation.addByPrefix('idleA', 'menu_GF', 24, true);//on 'idle normal' change it to your xml one
+			 char.animation.play('idleA');//you can rename the anim however you want to
+			 char.scrollFactor.set();
+			 FlxG.sound.play(Paths.sound('appear'), 2);
+			 char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+			 char.antialiasing = ClientPrefs.globalAntialiasing;
+			 add(char);	
+		)	
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
@@ -268,7 +318,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			spr.screenCenter(X);
+			//spr.screenCenter(X);
 		});
 	}
 
